@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <!-- Find the base.view_partner_form view by external ID -->
+        <record model="ir.ui.view" id="view_partner_form_inherited">
+            <field name="name">Telegram Extension</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                    <!-- Insert the telegram_number field after the mobile field -->
+                    <field name="vat" position="after">
+                        <field name="telegram_number" string="Telegram Mobile Number"/>
+                        <field name="telegram_username" string="Telegram Username"/>
+                        <field name="telegram_id" string="Telegram Id"/>
+                    </field>
+            </field>
+        </record>
+    </data>
+</odoo>

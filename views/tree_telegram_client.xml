@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="view_telegram_client_tree" model="ir.ui.view">
+            <field name="name">Telegram Client Tree View</field>
+            <field name="model">telegram.client</field>
+            <field name="arch" type="xml">
+                <tree string="Telegram Accounts">
+                    <field name="name"/>
+                    <field name="api_id"/>
+                    <field name="api_hash"/>
+                    <field name="phone_number"/>
+                    <field name="session_name"/>
+                    <field name="username"/>
+                    <field name="users"/>
+
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

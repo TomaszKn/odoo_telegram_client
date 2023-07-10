@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="view_telegram_client_form" model="ir.ui.view">
+            <field name="name">Telegram Account Settings Form</field>
+            <field name="model">telegram.client</field>
+            <field name="arch" type="xml">
+
+            <form string="Telegram Account Settings">
+                <header>
+                    <button name="get_me" string="Check telegram client" type="object" class="oe_highlight"/>
+                    <button name="start_event_loop" string="start telegram client" type="object" class="oe_highlight"/>
+
+                </header>
+                <sheet>
+                    
+                    <group class="o_label_nowrap">
+                        <field name="name"/>
+                        <field name="api_id"/>
+                        <field name="api_hash"/>
+                        <field name="phone_number"/>
+                        <field name="session_name"/>
+                        <field name="username"/>
+                        <field name="server_url"/>
+                        <field name="users"/>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

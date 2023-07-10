@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_telegram_client,telegram_client.telegram_client,model_telegram_client,base.group_user,1,1,1,1
+access_telegram_auth,Telegram Auth Wizard,model_telegram_auth,base.group_user,1,1,1,1

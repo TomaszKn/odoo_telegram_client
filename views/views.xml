@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="telegram_client.action_window">
+      <field name="name">Telegram Accounts</field>
+      <field name="res_model">telegram.client</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+<!-- Action for Mail Channels -->
+    <record model="ir.actions.act_window" id="telegram_channel_action_custom">
+      <field name="name">Mail Channels</field>
+      <field name="res_model">mail.channel</field>
+      <!-- <field name="view_mode">tree,form</field> -->
+      <!-- Ref to a specific tree and form view IDs -->
+      <!-- <field name="view_ids" 
+             eval="[(0, 0, {'view_mode': 'tree', 'view_id': ref('telegram_client.view_mail_channel_tree')}), 
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('telegram_client.view_mail_channel_form_custom')})]"/> -->
+      <!-- <field name="view_id" ref="view_mail_channel_tree"/> -->
+    </record>
+
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Telegram Settings" id="telegram_client.menu_root"/>
+
+    <!-- Mail Channel menu item -->
+    <menuitem name="Mail Channels" id="telegram_client.menu_2" parent="telegram_client.menu_root" 
+            action="telegram_channel_action_custom"/>
+
+    <!-- menu categories -->
+    <menuitem name="Settings" id="telegram_client.menu_1" parent="telegram_client.menu_root"
+              action="telegram_client.action_window"/>
+
+    <!-- actions -->
+    <!-- <menuitem name="Telegram Accounts" id="telegram_client.menu_1_list" parent="telegram_client.menu_1"
+              action="telegram_client.action_window"/> -->
+
+  </data>
+</odoo>

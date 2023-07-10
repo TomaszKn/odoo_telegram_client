@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_mail_channel_tree" model="ir.ui.view">
+            <field name="name">mail.channel.tree.custom</field>
+            <field name="model">mail.channel</field>
+            <field name="arch" type="xml">
+                <tree string="Mail Channels">
+                    <field name="name"/>
+                    <field name="channel_type"/>
+                    <field name="is_chat"/>
+                    <field name="is_member"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
