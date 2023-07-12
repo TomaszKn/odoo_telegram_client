@@ -9,7 +9,7 @@ class TelegramAuth(models.TransientModel):
     _name = "telegram.auth"
     _description = "Allow to pass Telegram phone and code to authenticate"
 
-    phone_number = fields.Char(string='Phone Number', readonly=True, default=lambda self: self._get_default_phone_number())
+    phone_number = fields.Char(string='Phone Number', readonly=True)
     code = fields.Char(string='Code')
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done'), ('connected', 'Connected')], string='State', default='draft')
     api_id = fields.Integer(string='Api ID', readonly=True,)

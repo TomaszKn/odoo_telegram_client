@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <!-- Find the base.view_partner_form view by external ID -->
-        <record model="ir.ui.view" id="view_users_form_inherited">
+        <record model="ir.ui.view" id="view_users_form_inherited_2">
             <field name="name">Res Users Extension</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form"/>

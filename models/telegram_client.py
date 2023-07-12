@@ -16,7 +16,7 @@ class telegram_client(models.Model):
     api_hash = fields.Char(string='Api Hash', required=True)
     phone_number = fields.Char(string='Telegram Phone Number', required=True)
     session_name = fields.Char(string='The name of the session file', required=True)
-    username = fields.Char(string='The Telegram Username', readonly=True, required=True)
+    username = fields.Char(string='The Telegram Username', readonly=True)
     users = fields.One2many('res.users', 'telegram_client_id', string='Associated Partners', required=True)
     server_url = fields.Char(string='Remote API server', required=True)
 

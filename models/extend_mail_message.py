@@ -1,5 +1,4 @@
 from odoo import models, fields, api, exceptions
-import asyncio
 
 
 # This module adds few new fields to 'mail.message' model
@@ -7,7 +6,7 @@ class TelegramMessage(models.Model):
     _inherit = 'mail.message'
 
     # Reffer to a field telegram.number in res.partner model viea M2O filed author_id
-    telegram_user_number_id = fields.Char(string='Telegram Number', related='author_id.telegram_number')
+    #telegram_user_number_id = fields.Char(string='Telegram Number', related='author_id.telegram_number')
     channel_id = fields.Many2one('mail.channel', string='Channel')
     telegram_dialog_id = fields.Char(string='Telegram Dialog', related='channel_id.telegram_dialog_id')
     telegram_message_id = fields.Char(string='Telegram Message ID')
@@ -36,7 +35,7 @@ class TelegramMessage(models.Model):
 
             # Check if message_type is 'telegram' then it's incoming from Telegram
             # So regular create() should be start, no need to post this message to Telegram again
-            if vals.get("message_type") == 'telegram':
+            if vals.get("message_type") == 'telegram' or vals.get("message_type") == 'notification':
                 print(f'=======INFO(extend_mail_message.py): vals.get("message_type") = telegram. Call regular create method')
                 message = super().create(vals)
                 print(f'=======INFO(extend_mail_message.py): Create has been called')
@@ -54,21 +53,26 @@ class TelegramMessage(models.Model):
                 return message
             
             except Exception as e:
-                print(f'Error in send_telegram_message(): {str(e)}')
+                print(f'Error in send_telegram_message():')
         else:
-            print(f'=======INFO(extend_mail_message.py): vals["message_type"] = {vals["message_type"]}')
+            print('Hello')
+            message = super().create(vals)
+            return message
 
-    @api.constrains('telegram_message_id', 'channel_id')
-    def _check_unique_pair(self):
-        for record in self:
-            if record.telegram_message_id and record.channel_id:
-                domain = [
-                    ('telegram_message_id', '=', record.telegram_message_id),
-                    ('channel_id', '=', record.channel_id.id),
-                    ('id', '!=', record.id)  # Exclude the current record from the domain
-                ]
-                duplicate_records = self.search(domain, limit=1)
-                if duplicate_records:
-                    raise exceptions.ValidationError(
-                        "A record with the same Telegram message ID and channel ID already exists."
-                    )
+            
+            #print(f'=======INFO(extend_mail_message.py): vals["message_type"] = {vals["message_type"]}')
+
+    # @api.constrains('telegram_message_id', 'channel_id')
+    # def _check_unique_pair(self):
+    #     for record in self:
+    #         if record.telegram_message_id and record.channel_id:
+    #             domain = [
+    #                 ('telegram_message_id', '=', record.telegram_message_id),
+    #                 ('channel_id', '=', record.channel_id.id),
+    #                 ('id', '!=', record.id)  # Exclude the current record from the domain
+    #             ]
+    #             duplicate_records = self.search(domain, limit=1)
+    #             if duplicate_records:
+    #                 raise exceptions.ValidationError(
+    #                     "A record with the same Telegram message ID and channel ID already exists."
+    #                 )
