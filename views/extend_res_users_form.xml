@@ -7,8 +7,10 @@
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
                     <!-- Insert the telegram_number field after the mobile field -->
-                    <field name="company_id" position="after">
-                        <field name="telegram_client_id" string="Telegram"/>
+                    
+                    <field name="signature" position="after">
+                        <separator string="Telegram"/>
+                        <field name="telegram_client_id" string="Telegram API settings"/>
 
                     </field>
             </field>
