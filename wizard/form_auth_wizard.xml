@@ -16,7 +16,13 @@
           <field name="phone_hash" attrs="{'invisible': [('state', 'in', ['draft', 'connected'])]}"/>
           <field name="code" attrs="{'invisible': [('state', 'in', ['draft', 'connected'])]}"/>
           <field name="state" attrs="{'invisible': True}"/>
+          <!-- <field name="auth_status" attrs="{'invisible': True}"/> -->
         </group>
+                <div class="alert alert-info text-center o_form_header" role="alert" 
+                    attrs="{'invisible': [('username', '=', True)]}">
+                    <strong>This is an alert message. Pay attention to this information.  </strong>
+                    <a class="close" data-dismiss="alert" href="#">x</a>
+                </div>
         <footer>
 <!--          button_send is a method defined in model-->
           <button type="object" name="get_code" string="GET SMS CODE" attrs="{'invisible': [('state', 'in', ['done', 'connected'])]}"/>

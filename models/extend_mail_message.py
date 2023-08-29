@@ -55,12 +55,10 @@ class TelegramMessage(models.Model):
             except Exception as e:
                 print(f'Error in send_telegram_message():')
         else:
-            print('Hello')
+            print('Channel is not a Telegram')
             message = super().create(vals)
             return message
 
-            
-            #print(f'=======INFO(extend_mail_message.py): vals["message_type"] = {vals["message_type"]}')
 
     # @api.constrains('telegram_message_id', 'channel_id')
     # def _check_unique_pair(self):
