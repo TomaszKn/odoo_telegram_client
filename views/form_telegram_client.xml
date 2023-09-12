@@ -7,7 +7,7 @@
 
             <form string="Telegram Account Settings">
                 <header>
-                    <button name="check_tg_auth" string="Check telegram auth status" type="object" class="oe_highlight"/>
+                    <button name="open_telegram_auth_wizard" string="Sign In" type="object" class="oe_highlight" attrs="{'invisible': False}"/>
                     <button name="start_event_loop" string="start telegram client" type="object" class="oe_highlight"/>
 
                 </header>
@@ -33,7 +33,7 @@
                         <field name="username"/>
                         <field name="server_url"/>
                         <field name="users"/>
-                        <field name="auth_status"/>
+                        <field name="auth_status" reload="1"/>
                     </group>
                 </sheet>
             </form>
